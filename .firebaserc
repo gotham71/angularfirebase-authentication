@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angularfirebase-authenti-9aacb": {
+      "hosting": {
+        "angularfirebase-authentication": [
+          "angularfirebase-authenti-9aacb"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angularfirebase-authenti-9aacb"
+  }
+}

@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -100,8 +101,21 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "angularfirebase-authentication:build:production",
+            "firebaseProject": "angularfirebase-authenti-9aacb",
+            "firebaseHostingSite": "angularfirebase-authenti-9aacb"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "964302c1-dfc8-4ceb-aab8-e77bca25fb79"
   }
 }

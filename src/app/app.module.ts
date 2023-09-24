@@ -11,33 +11,32 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
-
 import { AuthService } from './shared/services/auth.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpParamsInterceptor } from './interceptors/http-params.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    SignInComponent,
-    SignUpComponent,
-    ForgotPasswordComponent,
-    VerifyEmailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpParamsInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

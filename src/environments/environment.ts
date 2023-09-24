@@ -12,6 +12,7 @@ export const environment = {
     authDomain: 'angularfirebase-authenti-9aacb.firebaseapp.com',
     messagingSenderId: '50963443862',
   },
+  api: 'https://rawg.io/api',
 };
 
 /*

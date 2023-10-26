@@ -16,6 +16,7 @@
   <div class="row mt-2 mb-4" *ngIf="game">
     <div class="col-3">
       <ng-container *ngFor="let platform of game?.parent_platforms" >
+        <span>{{ platform.platform.id }} - {{ platform.platform.name }}</span>
         <img class="platform-img" src="assets/imgs/platforms/{{ platform.platform.slug }}.svg" alt="">
       </ng-container>
     </div>
@@ -29,7 +30,7 @@
   </div>
 
   <!-- <div *ngIf="game" [innerHTML]="game.description | ellipsisToggle:500"></div> -->
-  <span class="game-description" *ngIf="game" [innerHTML]="showFullDescription ? game.description : (game.description | ellipsisToggle:500).truncatedValue"></span>
+  <span class="game-dFescription" *ngIf="game" [innerHTML]="showFullDescription ? game.description : (game.description | ellipsisToggle:500).truncatedValue"></span>
   <div class="circled" *ngIf="!showFullDescription" (click)="toggleFullText()">+</div>
   <div class="row screenshots-container" *ngIf="game">
 

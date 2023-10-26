@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PlatformsList } from '../../data/platforms';
+import { Platform } from '../../models/game';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,6 +12,7 @@ import { Router } from '@angular/router';
 export class NavBarComponent implements OnInit {
 
   openedBtn = false;
+  PlatformsList: Platform[] = PlatformsList;
 
   constructor(private route: Router) { }
 

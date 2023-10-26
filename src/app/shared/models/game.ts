@@ -24,9 +24,16 @@ interface Genre {
 
 interface ParentPlatform {
   platform: {
+    id: number;
     name: string;
-    slug:string
+    slug:string;
   };
+}
+
+export interface Platform {
+  id: number;
+  name: string;
+  slug:string;
 }
 
 interface Publisher {

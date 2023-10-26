@@ -7,12 +7,17 @@
       </div>
       <div class="search-bar">
         <form class="search-form" (ngSubmit)="onSubmit(form)" #form="ngForm">
+          <select name="platforms" [(ngModel)]="platformsSelected" id="">
+            <option *ngFor="let data of PlatformsList" [ngValue]="data"> {{data.name}}
+            </option>
+          </select>
           <input
             class="search-input"
             name="search"
             ngModel
             placeholder="Search 500.000+ games"
           />
+
           <button class="search-button">Search</button>
         </form>
       </div>

@@ -14,8 +14,8 @@ $border-radius-size: 14px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin: auto;
-    margin-bottom: 24px;
+    //margin: auto;
+    //padding: 12px;
     border-radius: $border-radius-size + 5;
     position: relative;
     text-align: center;
@@ -31,9 +31,11 @@ $border-radius-size: 14px;
       img {
         border-top-left-radius: $border-radius-size;
         border-top-right-radius: $border-radius-size;
-        max-width:100%;
-        max-height:100%;
-        object-fit: contain;
+        // max-width:100%;
+        // max-height:100%;
+        // object-fit: contain;
+        width: 100%;
+
       }
     }
     .card-game-name {
@@ -91,5 +93,50 @@ $border-radius-size: 14px;
     box-shadow: 0px 2px 4px -2px rgba(255, 255, 255, 0.15);
   }
 
+
+  .masonry-item {
+    //padding: 1%;
+    //width: 23%;
+    padding: 1%;
+  }
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .masonry-item {
+    width: 100%;
+    padding: 2% 0%;
+  }
+ }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .masonry-item {
+    width: 47%;
+    padding: 1.5% 1%;
+  }
+ }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .masonry-item {
+    width: 31.5%;
+    ////padding: 1%;
+  }
+ }
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .masonry-item {
+    width: 23.7%;
+    padding: 0.8%;
+  }
+ }
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {
+  .masonry-item {
+    width: 23.7%;
+    //padding: 0.8%;
+  }
+ }
 /* CARD */
 

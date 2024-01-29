@@ -2,44 +2,72 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { APIresponse } from '../models/api-response';
 import { Game } from '../models/game';
-import { Observable, forkJoin, map } from 'rxjs';
+import { BehaviorSubject, Observable, forkJoin, map } from 'rxjs';
 import { environment as env } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GamesService {
+
+private platformSelected = new BehaviorSubject('');
+currentPlatformSelected = this.platformSelected.asObservable();
+private searchQuery = new BehaviorSubject('');
+currentSarchQuery = this.platformSelected.asObservable();
+
 isoFirstDayOfPreviousMonth!: string;
 isoLastDayOfNextMonth!: string;
 
 constructor(private http: HttpClient) { }
+  getPlatformSelected(platform: any) {
+    this.platformSelected.next(platform);
+    console.log(platform)
+  }
+  getSearchQuerySelected(searchQuery: string) {
+    this.searchQuery.next(searchQuery);
+  }
 
-  getGamesListByDates(ordering: string, search?: string): Observable<APIresponse<Game>> {
+  getGamesList(ordering: string, search?: string, platform?: number): Observable<APIresponse<Game>> {
     this.getDates();
 
-    let params = new HttpParams().set('ordering', ordering);
+    let params = new HttpParams().set('search_exact', true).set('search_precise', true);
 
-    if (search) {
-      params = new HttpParams().set('ordering', ordering).set('search', search);
+    if (platform) {
+      params =  params.set('parent_platforms', platform);
     }
 
-
-    return this.http.get<APIresponse<Game>>(`${env.api}/games?dates=${this.isoFirstDayOfPreviousMonth},${this.isoLastDayOfNextMonth}`, {
-      params: params,
-    });
-  }
-
-  getGamesList(ordering: string, search?: string): Observable<APIresponse<Game>> {
-    let params = new HttpParams().set('ordering', ordering);
-
     if (search) {
-      params = new HttpParams().set('ordering', ordering).set('search', search);
-    }
 
-    return this.http.get<APIresponse<Game>>(`${env.api}/games`, {
-      params: params,
-    });
+      console.log('something ->', search);
+      params = params.set('search', search).set('ordering', ordering);
+      return this.http.get<APIresponse<Game>>(`${env.api}/games`, {
+        params: params,
+      });
+    } else {
+      console.log('empty');
+
+      return this.http.get<APIresponse<Game>>(`${env.api}/games?dates=${this.isoFirstDayOfPreviousMonth},${this.isoLastDayOfNextMonth}`, {
+        params: params,
+      });
+    }
   }
+
+  // getGamesList(ordering: string, search?: string, platform?: number): Observable<APIresponse<Game>> {
+  //   console.log('getGamesList')
+
+  //   let params = new HttpParams().set('ordering', ordering).set('search_exact', true).set('search_precise', true);
+
+  //   if (search) {
+  //     params =  params.set('search', search);
+  //   }
+
+  //   if (platform) {
+  //     params =  params.set('parent_platforms', platform);
+  //   }
+  //   return this.http.get<APIresponse<Game>>(`${env.api}/games`, {
+  //     params: params,
+  //   });
+  // }
 
   getGameDetail(id: string): Observable<Game> {
     const gameInfoRequest = this.http.get(`${env.api}/games/${id}`);

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LandingPageRoutingModule } from './landing-routing-module';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
-
+import { NgxMasonryModule } from 'ngx-masonry';
 
 @NgModule({
   declarations: [
@@ -12,6 +12,8 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
   imports: [
     CommonModule,
     LandingPageRoutingModule,
+    NgxMasonryModule,
+
   ]
 })
 export class LandingModule { }

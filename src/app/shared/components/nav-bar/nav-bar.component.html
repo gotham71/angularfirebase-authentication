@@ -1,5 +1,5 @@
 <nav class="nav">
-  <div class="container-fluid p-0 d-flex">
+  <div class="container p-0 d-flex">
       <div class="logo">
           <a href="#">
             <img src="/assets/imgs/logo.png"/>
@@ -7,24 +7,23 @@
       </div>
       <div class="search-bar">
         <form class="search-form" (ngSubmit)="onSubmit(form)" #form="ngForm">
-          <select name="platforms" [(ngModel)]="platformsSelected" id="">
-            <option *ngFor="let data of PlatformsList" [ngValue]="data"> {{data.name}}
-            </option>
-          </select>
           <input
             class="search-input"
             name="search"
             ngModel
             placeholder="Search 500.000+ games"
           />
-
+          <select name="platforms" class="search-select" [(ngModel)]="platformsSelected" id="">
+            <option *ngFor="let data of PlatformsList" [ngValue]="data"> {{data.name}}
+            </option>
+          </select>
           <button class="search-button">Search</button>
         </form>
       </div>
       <div class="main_list" id="mainListDiv" [ngClass]="{'show_list': openedBtn}">
           <ul>
-              <li><a href="#">Home</a></li>
-              <!-- <li><a href="#">About</a></li>
+              <!-- <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
               <li><a href="#">my work</a></li>
               <li><a href="#">disegn</a></li>
               <li><a href="#">dcontact</a></li> -->

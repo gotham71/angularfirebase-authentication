@@ -3,7 +3,7 @@
   <div class="row mx-0">
     <div *ngIf="game" class="col-12 banner-img" [ngStyle]="{'background-image': 'url(' + game.background_image + ')'}">
       <div class="genre-name">
-        <div class="h6 me-3 mb-2 d-inline-block" style="color: #e69b00" *ngFor="let genre of game?.genres">
+        <div class="genre-label me-3 mb-2 d-inline-block" *ngFor="let genre of game?.genres">
           {{genre.name}}
         </div>
         <h1>{{game.name}}</h1>
@@ -16,14 +16,13 @@
   <div class="row mt-2 mb-4" *ngIf="game">
     <div class="col-3">
       <ng-container *ngFor="let platform of game?.parent_platforms" >
-        <span>{{ platform.platform.id }} - {{ platform.platform.name }}</span>
         <img class="platform-img" src="assets/imgs/platforms/{{ platform.platform.slug }}.svg" alt="">
       </ng-container>
     </div>
     <div class="col-3"></div>
     <div class="col-3"></div>
     <div class="col-3 d-flex justify-content-end align-items-center">
-      <div class="badged">
+      <div class="badged" *ngIf="game.released">
         {{game.released | date}}
       </div>
     </div>
@@ -31,7 +30,7 @@
 
   <!-- <div *ngIf="game" [innerHTML]="game.description | ellipsisToggle:500"></div> -->
   <span class="game-dFescription" *ngIf="game" [innerHTML]="showFullDescription ? game.description : (game.description | ellipsisToggle:500).truncatedValue"></span>
-  <div class="circled" *ngIf="!showFullDescription" (click)="toggleFullText()">+</div>
+  <div class="circled" *ngIf="!showFullDescription && game.description.length > 500" (click)="toggleFullText()">+</div>
   <div class="row screenshots-container" *ngIf="game">
 
       <ng-container *ngFor="let screenshot of game?.screenshots" >

@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" *ngIf="games">
   <div class="row">
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let game of games">
+    <!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let game of games">
         <div class="card-game" (click)="openGameDetails(game.id)">
           <div class="card-game-image">
             <img [src]="game.background_image" alt="">
@@ -28,7 +28,39 @@
             </div>
           </div>
         </div>
+    </div>
+  </div> -->
+
+  <ngx-masonry [options]="masonryOptions" [ordered]="true">
+    <div ngxMasonryItem class="masonry-item" *ngFor="let game of games">
+      <div class="card-game" (click)="openGameDetails(game.id)">
+        <div class="card-game-image">
+          <img [src]="game.background_image" alt="">
+        </div>
+        <div class="card-game-platforms">
+          <ng-container *ngFor="let platform of game.parent_platforms">
+            <img *ngIf="platform.platform.slug !== '3do'" src="assets/imgs/platforms/{{ platform.platform.slug }}.svg" alt="">
+          </ng-container>
+        </div>
+        <div class="card-game-name">
+          {{game.name}}
+        </div>
+        <div class="card-game-stats">
+          <div class="stats-container">
+            <div class="stat">{{game.metacritic || 0}}</div>
+            <div class="stat-value">Metacritic</div>
+          </div>
+          <div class="stats-container">
+            <div class="stat">{{game.rating || 0}}</div>
+            <div class="stat-value">Rating</div>
+          </div>
+          <div class="stats-container no-border">
+            <div class="stat">{{game.playtime || 0}}</div>
+            <div class="stat-value">Playtime</div>
+          </div>
+        </div>
       </div>
-  </div>
+    </div>
+  </ngx-masonry>
 </div>
 

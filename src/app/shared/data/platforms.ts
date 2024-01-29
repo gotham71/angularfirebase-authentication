@@ -1,6 +1,8 @@
 import { Platform } from '../models/game';
 
 export const PlatformsList: Platform[] = [
+
+  { id: 0, name: 'All Platforms', slug: '' },
   { id: 1, name: 'PC', slug: 'pc' },
   { id: 2, name: 'Playstation', slug: 'playstation' },
   { id: 3, name: 'Xbox', slug: 'xbox' },

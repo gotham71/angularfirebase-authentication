@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { faKey, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-sign-in',
@@ -7,6 +9,9 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
+  faUser = faUserCircle;
+  faPassword = faKey;
+  faGoogle = faGoogle;
 
   constructor(
     public authService: AuthService

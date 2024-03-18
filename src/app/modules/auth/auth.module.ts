@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { AuthRoutingModuleRoutes } from './auth-routing-module';
-
-
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    DashboardComponent,
+    SignInComponent,
+  ],
   imports: [
-    CommonModule,
     AuthRoutingModuleRoutes,
-  ]
+    CommonModule,
+    FontAwesomeModule,
+  ],
 })
 export class AuthModule { }

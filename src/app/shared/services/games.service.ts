@@ -21,7 +21,6 @@ isoLastDayOfNextMonth!: string;
 constructor(private http: HttpClient) { }
   getPlatformSelected(platform: any) {
     this.platformSelected.next(platform);
-    console.log(platform)
   }
   getSearchQuerySelected(searchQuery: string) {
     this.searchQuery.next(searchQuery);

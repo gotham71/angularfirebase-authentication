@@ -6,6 +6,9 @@ const routes: Routes = [
     path: 'landing', loadChildren: () => import(`@modules/landing/landing.module`).then( m => m.LandingModule)
   },
   {
+    path: 'dashboard', loadChildren: () => import(`@modules/auth/auth.module`).then( m => m.AuthModule)
+  },
+  {
     path: 'search/:game-search', redirectTo: '/landing/search/:game-search'
   },
   {

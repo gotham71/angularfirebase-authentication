@@ -1,0 +1,74 @@
+.bg-sign-in {
+  //background: linear-gradient(90deg, rgb(23, 23, 26) 44%, rgb(24, 24, 24));
+  background: linear-gradient(to bottom, rgba(38, 42, 64, 0.45), rgba(24, 24, 24, 0.85)),
+              url('../../../../../assets/imgs/bg-login-signup-7.png');
+  //background-size: cover;
+  background-repeat: repeat;
+  position: relative;
+  .logo-in-the-middle {
+    position: absolute;
+    top: -24px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 96px;
+  }
+  .form-container {
+    //background: linear-gradient(90deg, rgb(23, 23, 26) 44%, rgb(24, 24, 24));
+    background-color: rgba(38, 42, 64, 0.85);
+//    background-color: whitesmoke;
+    border-radius: 6px;
+    min-height: 500px;
+    width: 900px;
+    color: white;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 0 10px 8px rgba(255, 255, 255, 0.125);
+    .bg-form {
+      width: 450px;
+      padding: 65px 80px;
+
+      button {
+        height: 40px;
+        border: none;
+        font-size: 14px;
+      }
+      .google-button {
+        background-color: #de5246;
+        border: none;
+        padding: 0 0 0 0;
+        display: flex;
+        align-items: center;
+        .icon-container {
+          width: 64px;
+          height: 40px;
+          padding: 8px;
+          background-color: #DB4437;
+          border-top-left-radius: 6px;
+          border-bottom-left-radius: 6px;
+        }
+      }
+      .input-group-text {
+        background-color: rgba(255, 255, 255, 0.75);
+        color: white;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+      }
+      input {
+        //border-radius: 4px!important;
+        font-size: 14px;
+        outline: none;
+        box-shadow: none;
+        border: none;
+      }
+    }
+    .bg-form-img {
+      background: url('../../../../../assets/imgs/bg-login-signup.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 450px;
+      overflow: hidden;
+    }
+  }
+}

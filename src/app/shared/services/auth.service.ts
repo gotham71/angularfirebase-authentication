@@ -38,8 +38,10 @@ export class AuthService {
       .then((result) => {
         this.SetUserData(result.user);
         this.afAuth.authState.subscribe((user) => {
+          console.log(user);
           if (user) {
-            this.router.navigate(['dashboard']);
+            console.log('en ifff')
+            this.router.navigate(['landing']);
           }
         });
       })
